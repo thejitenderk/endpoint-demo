@@ -1,0 +1,46 @@
+rgs = {
+  rg1 = {
+    rgname = "rg-dev-app-ci"
+    rgloc  = "Central India"
+  }
+}
+
+vnets = {
+  vnet1 = {
+    virtual_network_name = "vnet-dev-app-ci"
+    rgmap                = "rg1"
+    address_space        = ["10.0.0.0/16"]
+  }
+}
+
+subnets = {
+  subnet1 = {
+    subnet_name      = "subnet-dev-app-ci"
+    vnetmap          = "vnet1"
+    rgmap            = "rg1"
+    address_prefixes = ["10.0.1.0/24"]
+    service_ep       = ["Microsoft.Storage"]
+  }
+}
+
+stgaccounts = {
+  stg1 = {
+    storage_account_name     = "stgdevappci"
+    rgmap                    = "rg1"
+    account_tier             = "Standard"
+    account_replication_type = "LRS"
+    subnetmap                = "subnet1"
+  }
+}
+
+
+windows_vms = {
+  vm1 = {
+    vm_name        = "vm-dev-app-ci"
+    rgmap          = "rg1"
+    subnetmap      = "subnet1"
+    vm_size        = "Standard_D2s_v3"
+    admin_username = "adminuser"
+    admin_password = "Iwant2learn2026"
+  }
+}
